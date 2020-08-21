@@ -66,4 +66,20 @@ describe('Survivor Controller', () => {
     expect(httpResponse.statusCode).toBe(400)
     expect(httpResponse.body).toEqual(new MissingParamError('location'))
   })
+  test('Should return 400 if no inventory is provided', () => {
+    const sut = new SurvivorController()
+
+    const httpRequest = {
+      body: {
+        name: 'any_name',
+        age: 15,
+        gender: 'any_gender',
+        location: 'any_location'
+      }
+    }
+
+    const httpResponse = sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(400)
+    expect(httpResponse.body).toEqual(new MissingParamError('inventory'))
+  })
 })
