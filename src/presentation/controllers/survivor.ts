@@ -11,5 +11,9 @@ export class SurvivorController {
     if (!httpRequest.body.age) {
       return badRequest(new MissingParamError('age'))
     }
+
+    if (!httpRequest.body.gender) {
+      return badRequest(new MissingParamError('gender'))
+    }
   }
 }
