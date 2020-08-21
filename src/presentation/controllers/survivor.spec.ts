@@ -1,9 +1,14 @@
 import { SurvivorController } from './survivor'
 import { MissingParamError } from '../errors/missing-param-error'
 
+const makeSut = (): SurvivorController => {
+  const sut = new SurvivorController()
+  return sut
+}
+
 describe('Survivor Controller', () => {
   test('Should return 400 if no name is provided', () => {
-    const sut = new SurvivorController()
+    const sut = makeSut()
 
     const httpRequest = {
       body: {
@@ -19,7 +24,7 @@ describe('Survivor Controller', () => {
     expect(httpResponse.body).toEqual(new MissingParamError('name'))
   })
   test('Should return 400 if no age is provided', () => {
-    const sut = new SurvivorController()
+    const sut = makeSut()
 
     const httpRequest = {
       body: {
@@ -35,7 +40,7 @@ describe('Survivor Controller', () => {
     expect(httpResponse.body).toEqual(new MissingParamError('age'))
   })
   test('Should return 400 if no gender is provided', () => {
-    const sut = new SurvivorController()
+    const sut = makeSut()
 
     const httpRequest = {
       body: {
@@ -51,7 +56,7 @@ describe('Survivor Controller', () => {
     expect(httpResponse.body).toEqual(new MissingParamError('gender'))
   })
   test('Should return 400 if no location is provided', () => {
-    const sut = new SurvivorController()
+    const sut = makeSut()
 
     const httpRequest = {
       body: {
@@ -67,7 +72,7 @@ describe('Survivor Controller', () => {
     expect(httpResponse.body).toEqual(new MissingParamError('location'))
   })
   test('Should return 400 if no inventory is provided', () => {
-    const sut = new SurvivorController()
+    const sut = makeSut()
 
     const httpRequest = {
       body: {
