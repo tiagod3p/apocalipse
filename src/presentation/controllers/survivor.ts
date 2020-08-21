@@ -4,7 +4,7 @@ import { MissingParamError } from '../errors/missing-param-error'
 
 export class SurvivorController {
   handle (httpRequest: HttpRequest): HttpResponse {
-    const requiredFields = ['name', 'age', 'gender']
+    const requiredFields = ['name', 'age', 'gender', 'location']
     for (const field of requiredFields) {
       if (!httpRequest.body[field]) {
         return badRequest(new MissingParamError(field))
