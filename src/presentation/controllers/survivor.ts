@@ -1,14 +1,15 @@
 import { HttpRequest, HttpResponse } from '../protocols/http'
 import { badRequest } from '../helpers/http-helper'
+import { MissingParamError } from '../errors/missing-param-error'
 
 export class SurvivorController {
   handle (httpRequest: HttpRequest): HttpResponse {
     if (!httpRequest.body.name) {
-      return badRequest(new Error('Missing param: name'))
+      return badRequest(new MissingParamError('name'))
     }
 
     if (!httpRequest.body.age) {
-      return badRequest(new Error('Missing param: age'))
+      return badRequest(new MissingParamError('age'))
     }
   }
 }
